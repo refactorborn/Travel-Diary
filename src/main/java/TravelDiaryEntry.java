@@ -3,11 +3,11 @@ import java.util.List;
 
 public class TravelDiaryEntry {
 
-    private String locationName;
     private final List<String> images;
     private final List<String> reviews;
     private final List<String> categories; // List to store categories
     private final List<List<String>> categorizedImages; // List of lists to store categorized images
+    private String locationName;
 
     public TravelDiaryEntry(String locationName) {
         this.locationName = locationName;
@@ -24,9 +24,6 @@ public class TravelDiaryEntry {
     public void setLocationName(String locationName) {
         this.locationName = locationName;
     }
-    public void setReviews(List<String> reviews) {
-        this.reviews.addAll(reviews);
-    }
 
     public List<String> getImages() {
         return images;
@@ -34,6 +31,10 @@ public class TravelDiaryEntry {
 
     public List<String> getReviews() {
         return reviews;
+    }
+
+    public void setReviews(List<String> reviews) {
+        this.reviews.addAll(reviews);
     }
 
     public void addImage(String imageUrl, String category) {
