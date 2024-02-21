@@ -4,13 +4,14 @@ import java.util.Collections;
 import java.util.List;
 
 public class TravelDiaryApp {
+    private List<TravelDiaryEntry> travelDiaryEntries; // Encapsulation: Private field encapsulated within the class
 
-    private List<TravelDiaryEntry> travelDiaryEntries;
-
+    // Constructor
     public TravelDiaryApp() {
         this.travelDiaryEntries = new ArrayList<>();
     }
 
+    // Method to add a new entry
     public void addEntry(String locationName) {
         if (containsLocation(locationName)) {
             int option = JOptionPane.showConfirmDialog(null, "Location already exists. Do you want to add to the existing entry?", "Duplicate Location", JOptionPane.YES_NO_OPTION);
@@ -23,6 +24,7 @@ public class TravelDiaryApp {
         travelDiaryEntries.add(new TravelDiaryEntry(locationName));
     }
 
+    // Method to check if a location already exists
     public boolean containsLocation(String locationName) {
         for (TravelDiaryEntry entry : travelDiaryEntries) {
             if (entry.getLocationName().equals(locationName)) {
@@ -32,6 +34,7 @@ public class TravelDiaryApp {
         return false;
     }
 
+    // Method to retrieve a diary entry by location name
     public TravelDiaryEntry getEntry(String locationName) {
         for (TravelDiaryEntry entry : travelDiaryEntries) {
             if (entry.getLocationName().equals(locationName)) {
@@ -41,6 +44,7 @@ public class TravelDiaryApp {
         return null;
     }
 
+    // Method to retrieve a list of all location names
     public List<String> getLocations() {
         List<String> locations = new ArrayList<>();
         for (TravelDiaryEntry entry : travelDiaryEntries) {
@@ -49,6 +53,7 @@ public class TravelDiaryApp {
         return locations;
     }
 
+    // Method to retrieve images for a specific location
     public List<String> getImagesForLocation(String locationName) {
         TravelDiaryEntry entry = getEntry(locationName);
         if (entry != null) {
@@ -57,6 +62,7 @@ public class TravelDiaryApp {
         return Collections.emptyList();
     }
 
+    // Method to add an image to a location
     public void addImage(String locationName, String imageUrl, String category) {
         TravelDiaryEntry entry = getEntry(locationName);
         if (entry != null) {
@@ -68,6 +74,7 @@ public class TravelDiaryApp {
         }
     }
 
+    // Method to add a review to a location
     public void addReview(String locationName, String review) {
         TravelDiaryEntry entry = getEntry(locationName);
         if (entry != null) {
@@ -75,25 +82,27 @@ public class TravelDiaryApp {
         }
     }
 
+    // Method to edit the name of a location
     public void editLocation(String locationName, String newLocationName) {
-        for (TravelDiaryEntry entry : travelDiaryEntries) {
-            if (entry.getLocationName().equals(locationName)) {
-                entry.setLocationName(newLocationName);
-                return;
-            }
+        TravelDiaryEntry entry = getEntry(locationName);
+        if (entry != null) {
+            entry.setLocationName(newLocationName);
+        } else {
+            System.out.println("Error: Location '" + locationName + "' does not exist.");
         }
-        System.out.println("Error: Location '" + locationName + "' does not exist.");
     }
 
+    // Method to delete a location entry
     public void deleteLocation(String locationName) {
-        for (TravelDiaryEntry entry : travelDiaryEntries) {
-            if (entry.getLocationName().equals(locationName)) {
-                travelDiaryEntries.remove(entry);
-                return;
-            }
+        TravelDiaryEntry entry = getEntry(locationName);
+        if (entry != null) {
+            travelDiaryEntries.remove(entry);
+        } else {
+            System.out.println("Error: Location '" + locationName + "' does not exist.");
         }
-        System.out.println("Error: Location '" + locationName + "' does not exist.");
     }
+
+    // Method to perform bubble sort on a list of locations
     public void bubbleSort(List<String> locations) {
         int n = locations.size();
         boolean swapped;
