@@ -16,7 +16,7 @@ public class TravelDiaryEntry extends DiaryEntry {
     public void addImage(String imageUrl, String category) {
         // Check if the image already exists
         if (getImages().contains(imageUrl)) {
-            System.out.println("This image is already added.");
+            System.out.println("this image already exist!.");
             return;
         }
 
