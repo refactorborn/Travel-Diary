@@ -1,4 +1,4 @@
-# Travel Diary App
+# Travel Diary
 
 This is a simple Java application for managing travel diary entries. It allows users to add locations, add images and reviews to these locations, search for locations, and more.
 
@@ -17,8 +17,3 @@ This is a simple Java application for managing travel diary entries. It allows u
 - Java Development Kit (JDK) installed on your machine.
 - IDE (e.g., IntelliJ IDEA, Eclipse) for running and editing the Java code.
 
-### Installation
-
-1. Clone the repository to your local machine.
-   ```sh
-   git clone https://github.com/your-username/travel-diary-app.git
